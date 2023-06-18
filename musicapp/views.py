@@ -9,11 +9,6 @@ class ScoreView(viewsets.ModelViewSet):
     serializer_class = ScoreSerializer
     queryset = Score.objects.all()
 
-class Index(View):
-    template = "index.html"
 
 
 
-
-def index(request):
-    return render(request,Index.template) 

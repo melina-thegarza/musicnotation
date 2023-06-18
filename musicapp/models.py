@@ -9,4 +9,4 @@ class Score(models.Model):
     composer = models.CharField(max_length=120)
 
     def __str__(self):
-        return self.id
+        return str(self.id)

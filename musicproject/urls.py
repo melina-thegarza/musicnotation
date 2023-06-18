@@ -16,8 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include,path
+from rest_framework import routers
+from musicapp import views
+
+#for the API, router class allows for CRUD on score objects
+router = routers.DefaultRouter()
+router.register(r'scores',views.ScoreView,'score') 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("musicapp/",include("musicapp.urls")),
+    #URL path for the api
+    path("api/",include(router.urls)),
 ]
