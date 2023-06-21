@@ -24,7 +24,7 @@ export default class ScoreList extends React.Component{
               <li key={score.id}>title: {score.title} composer: {score.composer}</li>
             )
         }
-      </ul>
+            </ul>
         )
     }
 

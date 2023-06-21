@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  padding: 5% 0;
+}
+
+.ScoresList {
+  padding: 5% 0;
 }
 
 .App-logo {
