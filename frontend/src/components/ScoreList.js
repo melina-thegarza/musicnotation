@@ -21,7 +21,9 @@ export default class ScoreList extends React.Component{
         {
           this.state.scores
             .map(score =>
-              <li key={score.id}>title: {score.title} composer: {score.composer}</li>
+                <li key={score.id}>
+                    <strong>Title:</strong> {score.title} <strong>Composer:</strong> {score.composer}
+                </li>
             )
         }
             </ul>
