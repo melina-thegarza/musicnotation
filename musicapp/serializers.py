@@ -4,6 +4,7 @@ from .models import Score
 
 #define API representation
 class ScoreSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Score
-        fields = ('id','title','composer')
+        fields = ('id','title','composer', 'instrument', 'time_signature', 'musickey')

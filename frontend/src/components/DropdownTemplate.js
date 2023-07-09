@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from 'reactstrap';
+import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import PropTypes from 'prop-types'; 
 
-function DropdownTemplate({title, item1, item2, item3, item4, direction, ...args }) {
+function DropdownTemplate({title, items, direction, value, name, onChange, ...args }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(value || null);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
     setDropdownOpen(false);
+    onChange({ target: { name, value: item } });
   }
+
+  const dropdownItems = items.map((item) => (
+    <DropdownItem key={item} onClick={() => handleItemClick(item)}>
+        {item}
+    </DropdownItem>
+  ));
 
   return (
     <div className="d-flex p-5">
@@ -24,10 +26,7 @@ function DropdownTemplate({title, item1, item2, item3, item4, direction, ...args
         <DropdownToggle caret>{selectedItem ? selectedItem : title}</DropdownToggle>
         <DropdownMenu {...args}>
           <DropdownItem header>{title}</DropdownItem>
-          <DropdownItem onClick = {() => handleItemClick(item1)}>{item1}</DropdownItem>
-          <DropdownItem onClick = {() => handleItemClick(item2)}>{item2}</DropdownItem>
-          <DropdownItem onClick = {() => handleItemClick(item3)}>{item3}</DropdownItem>
-          <DropdownItem onClick = {() => handleItemClick(item4)}>{item4}</DropdownItem>
+          {dropdownItems}
         </DropdownMenu>
       </Dropdown>
     </div>
