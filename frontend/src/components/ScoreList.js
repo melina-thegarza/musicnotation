@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
 import axios from 'axios';
 
+
+import {Link} from "react-router-dom";
+
 export default class ScoreList extends Component{
     state = {
         scores: []
@@ -17,8 +20,10 @@ export default class ScoreList extends Component{
 
     render() {
         return (
-
+            
             <div className="container">
+                 <Link to="/"> <button  class="btn btn-dark">Home</button></Link>
+                <h1>Score List</h1>
                 <Table hover>
                     <thead>
                         <tr>
@@ -50,3 +55,40 @@ export default class ScoreList extends Component{
     }
 
 }
+// import React from 'react';
+// import axios from 'axios';
+// import {Link} from "react-router-dom";
+
+// export default class ScoreList extends React.Component{
+//     state = {
+//         scores: []
+//     }
+
+
+//     componentDidMount(){
+//         axios.get('http://127.0.0.1:8000/api/scores/').then(res=>{
+//             console.log(res.data)
+//             const scores = res.data;
+//             this.setState({scores});
+//         })
+//     }
+
+//     render(){
+//         return(
+//         <div>
+//             <Link to="/"> <button  class="btn btn-dark">Home</button></Link>
+//             <h1>ScoresList</h1>
+//             <ul>
+//         {
+//           this.state.scores
+//             .map(score =>
+//               <li key={score.id}>  title: {score.title} composer: {score.composer}</li>
+//             )
+//         }
+//             </ul>
+//         </div>
+//         )
+//     }
+
+
+// }
