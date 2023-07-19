@@ -19,6 +19,18 @@
 
 // export default App;
 
+// function App() {
+//   return (
+//     <div className="App container">
+//       <h1>Music Notation</h1>
+//       <Button/>
+     
+//     </div>
+//   );
+// }
+
+// export default App;
+
 import './App.css';
 import React from "react";
 import ScoreList from './components/ScoreList';

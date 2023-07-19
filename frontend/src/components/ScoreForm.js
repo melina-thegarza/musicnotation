@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import DropdownTemplate from './DropdownTemplate';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import axios from 'axios';
-
+let axiosConfig = {
+    headers: {
+        'Content-Type': 'application/json',
+        "Vary": "Accept",
+    }
+  };
 class ScoreForm extends Component {
 
     constructor(props) {
@@ -33,7 +38,7 @@ class ScoreForm extends Component {
         }
         
         axios
-        .post('http://127.0.0.1:8000/api/scores/', scoreData)
+        .post('http://127.0.0.1:8000/api/scores/', scoreData,axiosConfig)
         .then((response) => {
             // Handle success
             console.log('Score created:', response.data);

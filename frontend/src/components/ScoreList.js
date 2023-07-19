@@ -12,11 +12,19 @@ export default class ScoreList extends Component{
 
     componentDidMount() {
         axios.get('http://127.0.0.1:8000/api/scores/').then(res=>{
-            console.log(res.data)
             const scores = res.data;
             this.setState({scores});
         })
     }
+    handleDelete = (id) => {
+        axios.delete('http://localhost:8000/api/scores/'+id+'/')
+        .then((res) => this.refreshRecords());
+    }
+    refreshRecords = () => {
+        axios.get("http://localhost:8000/api/scores/")
+        .then((res) => this.setState({scores: res.data }));
+        
+    };
 
     render() {
         return (
@@ -43,7 +51,7 @@ export default class ScoreList extends Component{
                                 <td>
                                     <Button>Edit</Button>
                                     {' '}
-                                    <Button color="danger">Delete</Button>
+                                    <Button color="danger" onClick={() => this.handleDelete(score.id)}>Delete</Button>
                                 </td>
                             </tr>
                         </tbody>
